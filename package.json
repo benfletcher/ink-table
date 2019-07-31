@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "pretest": "npm run build",
-    "test": "xo && ava",
+    "test": "ava",
     "build": "babel src --out-dir=dist",
     "prepublish": "npm run build",
     "semantic-release": "semantic-release",
@@ -38,14 +38,17 @@
     "@babel/preset-react": "7.0.0",
     "ava": "1.4.1",
     "eslint-config-xo-react": "0.19.0",
-    "eslint-plugin-react": "7.13.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "1.6.0",
     "ink": "2.2.0",
     "ink-testing-library": "1.0.1",
     "react": "16.8.6",
     "semantic-release": "15.13.16",
-    "travis-deploy-once": "5.0.11",
-    "xo": "0.24.0"
+    "travis-deploy-once": "5.0.11"
   },
   "peerDependencies": {
     "ink": ">=2.0.0",
@@ -54,19 +57,16 @@
   "babel": {
     "presets": [
       "@ava/stage-4",
-      "@babel/preset-react"
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": true
+          }
+        }
+      ]
     ]
-  },
-  "xo": {
-    "extends": "xo-react",
-    "space": true,
-    "semicolon": false,
-    "rules": {
-      "new-cap": 0,
-      "complexity": 0,
-      "default-case": 0,
-      "react/no-unused-prop-types": 0
-    }
   },
   "ava": {
     "color": true
